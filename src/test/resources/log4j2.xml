@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration monitorInterval="60">
     <Properties>
-        <Property name="log-file">app.log</Property>
+        <Property name="log-file">test.log</Property>
         <Property name="log-path">logs</Property>
         <Property name="archive">${log-path}/archive</Property>
     </Properties>
@@ -33,8 +33,8 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="edu.depaul.cdm.se452" level="info">
-            <AppenderRef ref="File" level="info" />
+        <Logger name="edu.depaul.cdm.se452" level="debug">
+            <AppenderRef ref="File" level="debug" />
         </Logger>
         <Root level="error">
             <AppenderRef ref="Console" />

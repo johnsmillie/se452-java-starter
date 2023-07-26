@@ -1,19 +1,32 @@
 package edu.depaul.cdm.se452.concept.base.school.simple;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-import org.springframework.stereotype.Repository;
+import edu.depaul.cdm.se452.concept.Repository;
 
-@Repository
-public class CourseRepository {
-    private static HashMap<Long, Course> COURSE = new HashMap<Long, Course>();
+public class CourseRepository implements Repository<Course, Long> {
+    private static HashMap<Long, Course> COURSES = new HashMap<Long, Course>();
 
+    @Override
     public Course save(Course course) {
-        COURSE.put(course.getId(), course);
+        COURSES.put(course.getId(), course);
         return course;
     }    
 
-    public Course findById(Long id) {
-        return COURSE.get(id);
+    @Override
+    public Optional<Course> findById(Long id) {
+        Optional<Course> courses = COURSES.entrySet().stream()
+            .filter(e -> id.equals(e.getKey()))
+            .map(Map.Entry::getValue)
+            .findFirst();
+
+        return courses;
+    }
+
+    @Override
+    public int count() {
+        return COURSES.size();
     }
 }

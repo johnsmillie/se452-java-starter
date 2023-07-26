@@ -1,14 +1,16 @@
 package edu.depaul.cdm.se452.concept.base.school.complex;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class InstructorRepository { 
+import edu.depaul.cdm.se452.concept.Repository;
+
+public class InstructorRepository implements Repository<Instructor, Long> { 
     private static HashMap<Long, Instructor> INSTRUCTORS = new HashMap<Long, Instructor>();
 
+    @Override
     public Instructor save(Instructor instructor) {
         if (instructor.getId() == null) {
             instructor.setId(new Random().nextLong());
@@ -17,21 +19,26 @@ public class InstructorRepository {
         return instructor;
     }    
 
-    public Instructor findById(Long id) {
-        return INSTRUCTORS.get(id);
+    @Override
+    public Optional<Instructor> findById(Long id) {
+        Optional<Instructor> instructor = INSTRUCTORS.entrySet().stream()
+            .filter(e -> id.equals(e.getKey()))
+            .map(Map.Entry::getValue)
+            .findFirst();
+
+        return instructor;
     }
 
-    public Instructor findByName(String name) {
-        Instructor retval = null;
-
+    public Optional<Instructor> findByName(String name) {
         Optional<Instructor> instructors = INSTRUCTORS.values().stream()
             .filter(instructor -> name.equalsIgnoreCase(instructor.getName()))
             .findFirst();
 
-//        INSTRUCTORS.values().stream().filter( (instructor) -> 
-//        instructor.getName().contains(name)).findFirst()
-//        );
-        retval = instructors.get(); 
-        return retval;
+        return instructors;
+    }
+
+    @Override
+    public int count() {
+        return INSTRUCTORS.size();
     }    
 }
