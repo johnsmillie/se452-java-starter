@@ -9,13 +9,7 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout
                 pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
-        </Console>
-        <File name="File"
-            fileName="./${log-path}/${log-file}">
-            <PatternLayout>
-                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
-            </PatternLayout>
-        </File>        
+        </Console>     
         <RollingFile name="RollingFile"
             fileName="./${log-path}/${log-file}"
             filePattern="./${log-path}/$${date:yyyy-MM}/test-%d{-dd-MMMM-yyyy}-%i.log.gz">
@@ -34,7 +28,7 @@
     </Appenders>
     <Loggers>
         <Logger name="edu.depaul.cdm.se452" level="info">
-            <AppenderRef ref="File" level="info" />
+            <AppenderRef ref="RollingFile" level="info" />
         </Logger>
         <Root level="error">
             <AppenderRef ref="Console" />
