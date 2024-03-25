@@ -21,7 +21,6 @@ public class EmployeeTest {
         HourlyEmployee hourly = new HourlyEmployee();
         hourly.setName("James");
         hourly.setRate(15.25);
-        String toString = hourly.toString();
         
         HourlyEmployee hourly2 = new HourlyEmployee();
         hourly2.setName("James");
