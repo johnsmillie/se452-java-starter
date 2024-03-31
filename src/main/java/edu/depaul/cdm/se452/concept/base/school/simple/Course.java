@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Course {
+    @Builder.Default
     private Long id = new Random().nextLong();
 
     private String dept;
