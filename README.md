@@ -16,7 +16,7 @@
 | *[WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) | To enable Linux toolset on Windows 
 | *[Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6) | Linux environment to keep Windows and Mac with similar tools 
 | *[Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) | Real Terminal for Windows 
-| [SDKMan](https://sdkman.io/) | Simplifies switching between JDKs and SDKs | sdk install java 21.0.2-tem<br/>sdk install gradle<br/> sdk install maven
+| [SDKMan](https://sdkman.io/) | Simplifies switching between JDKs and SDKs | sdk install java 21.0.3-tem<br/>sdk install gradle<br/> sdk install maven
 | [VS Code](https://code.visualstudio.com) | Code Editor  
 
 *recommended for Windows only.  However you can install JDK and VSCode without WSL<br/><br/>
